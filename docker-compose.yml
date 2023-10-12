@@ -3,12 +3,14 @@ version: '3'
 services:
   master:
     image: actionml/spark:latest
+    restart: always
     command: master
     ports:
       - 8080:8080
 
   worker:
     image: actionml/spark:latest
+    restart: always
     command: worker spark://master:7077
     depends_on:
       - master
